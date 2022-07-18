@@ -1,9 +1,9 @@
 require 'pry'
 
 class User
-  attr_accessor :eamil
+  attr_accessor :email
   attr_accessor :age
-  @@all_users = []
+  @@all_users = Array.new
 
   def initialize(email_to_save,age_to_save)
     @@all_users.push(self)
@@ -12,8 +12,17 @@ class User
   end
 
   def self.all
-    return @@all_users
+    puts @@all_users
   end
+
+  def self.find_by_email(email_to_find)
+    @@all_users.each do |x|
+      if x.email == email_to_find
+        return x
+      end
+    end
+  end
+  
 end
 
-#binding.pry
+binding.pry
